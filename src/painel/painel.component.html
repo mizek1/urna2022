@@ -1,0 +1,46 @@
+<main>
+  <div class=tela *ngIf="!telaFim">
+    <div class="header-tela">
+      <h2>JUSTIÇA ELEITORAL - ELEIÇÕES 2022</h2>
+      <h3>VOTO PARA PRESIDENTE</h3>
+    </div>
+    <br>
+    <div style="display: flex; align-items: center;">
+      <h3 style="align-self: center;">{{status}}</h3>
+      <h1>{{numeroVotado}}</h1>
+      <img *ngIf="numeroVotado == 13" src="../assets/lula13.jpeg"/>
+      <img *ngIf="numeroVotado == 17" src="../assets/bozonaro17.jpg"/>
+    </div>
+  </div>
+  <div class=tela *ngIf="telaFim">
+    <div class="header-tela">
+      <h2>JUSTIÇA ELEITORAL - ELEIÇÕES 2022</h2>
+      <h4>FIM</h4>
+    </div>
+    <br>
+    <div style="display: flex; align-items: center;">
+      <h3 style="align-self: center;">VOCÊ VOTOU EM</h3>
+      <h1>{{numeroVotado}}</h1>
+      <img *ngIf="numeroVotado == 13" src="../assets/lula13.jpeg"/>
+      <img *ngIf="numeroVotado == 17" src="../assets/bozonaro17.jpg"/>
+    </div>
+  </div>
+  <div class="painel">
+    <div class="painel-numerico">
+      <button class="botao-numerico" *ngFor="let val of teclado; let i = index"
+      [value]="val"
+      (click)="apertaNumero(i)"
+      >
+      {{val}}
+      </button>
+    </div>
+    <div class="painel-funcao">
+      <button nbButton class="botao-funcao" [ngClass]="setClassesBotaoFuncao(val)" *ngFor="let val of funcoes"
+      [value]="val"
+      (click)="apertaFuncao(val)"
+      >
+      {{val}}
+      </button>
+    </div>
+  </div>
+</main>
